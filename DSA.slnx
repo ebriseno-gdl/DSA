@@ -1,0 +1,50 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Folder Name="/Codility/" />
+  <Folder Name="/DS/" />
+  <Folder Name="/LeetCode/" />
+  <Folder Name="/LeetCode/Cpp/">
+    <Project Path="LeetCode/Cpp/CombinationSumIICpp-LeetCode_40/CombinationSumIICpp-LeetCode_40.vcxproj" Id="b00f264e-e346-4c49-a578-3f838c578e3b" />
+    <Project Path="LeetCode/Cpp/CombinationSumIIICpp-LeetCode_216/CombinationSumIIICpp-LeetCode_216.vcxproj" Id="1df5c3d0-44a3-4593-9c4b-7d9b40822d0d" />
+    <Project Path="LeetCode/Cpp/LetterCombinationsCpp-LeetCode17-PaylocityExam/LetterCombinationsCpp-LeetCode17-PaylocityExam.vcxproj" Id="31aee19e-bc69-425a-98b7-c53079add596" />
+    <Project Path="LeetCode/Cpp/PermutationsCpp-LeetCode_46/PermutationsCpp-LeetCode_46.vcxproj" Id="f47c271d-cd16-4630-b2e9-1f2586a10c78" />
+    <Project Path="LeetCode/Cpp/PermutationsIICpp-LeetCode_47/PermutationsIICpp-LeetCode_47.vcxproj" Id="eb2f84f8-3607-4855-b18c-b86c4d3c5f11" />
+    <Project Path="LeetCode/Cpp/TwoSumCpp-LeetCode_01/TwoSumCpp-LeetCode_01.vcxproj" Id="0c49781d-a786-43f8-b969-60534f7da132" />
+  </Folder>
+  <Folder Name="/LeetCode/CSharp/">
+    <Project Path="LeetCode/CSharp/BestTimeBuySellStockCSharp-LeetCode_121/BestTimeBuySellStockCSharp-LeetCode_121.csproj" Id="7990f3dc-0efe-4b30-bd2c-97cd081b03a0" />
+    <Project Path="LeetCode/CSharp/CombinationSumIICSharp-LeetCode_40/CombinationSumIICSharp-LeetCode_40.csproj" Id="47cb4bf4-215c-4dad-99d2-95aeab641f2a" />
+    <Project Path="LeetCode/CSharp/CombinationSumIIICSharp-LeetCode_216/CombinationSumIIICSharp-LeetCode_216.csproj" Id="1db6a383-371c-4793-ae7d-e99baf00e76e" />
+    <Project Path="LeetCode/CSharp/ContainMostWaterCSharp-LeetCode_11/ContainMostWaterCSharp-LeetCode_11.csproj" Id="770edb84-d68e-47a0-909d-35d0233d37a7" />
+    <Project Path="LeetCode/CSharp/DailyTemperaturesCSharp-LeetCode_739/DailyTemperaturesCSharp-LeetCode_739.csproj" Id="b30c0628-793f-4513-85e4-5a64cc39a58a" />
+    <Project Path="LeetCode/CSharp/GroupAnagramsCSharp-LeetCode_49/GroupAnagramsCSharp-LeetCode_49.csproj" Id="402e1c2d-5e82-4ceb-900f-d89b15893a7c" />
+    <Project Path="LeetCode/CSharp/LetterCombinationsCSharp-LeetCode17-PaylocityExam/LetterCombinationsCSharp-LeetCode17-PaylocityExam.csproj" Id="9dd0e53c-45d8-462a-9785-f4f1a05e2121" />
+    <Project Path="LeetCode/CSharp/LongestSubstrNoRepeatCharsCSharp-LeetCode_3/LongestSubstrNoRepeatCharsCSharp-LeetCode_3.csproj" Id="a227a940-0691-4e16-8103-5c3bafe3c132" />
+    <Project Path="LeetCode/CSharp/MergeIntervalsCSharp-LeetCode_56/MergeIntervalsCSharp-LeetCode_56.csproj" Id="3378e6af-f0b2-47bd-93af-5207a2a1e6ee" />
+    <Project Path="LeetCode/CSharp/NumberOfIslandsCSharp-LeetCode_200/NumberOfIslandsCSharp-LeetCode_200.csproj" Id="71ea81a9-9916-4319-b32c-bd80af9371ef" />
+    <Project Path="LeetCode/CSharp/PermutationsCSharp-LeetCode_46/PermutationsCSharp-LeetCode_46.csproj" Id="d5c12868-bcdb-4325-876a-f32ab660c9d3" />
+    <Project Path="LeetCode/CSharp/PermutationsIICSharp-LeetCode_47/PermutationsIICSharp-LeetCode_47.csproj" Id="537dd69b-7bb1-4093-b8a5-d69c927d1b20" />
+    <Project Path="LeetCode/CSharp/TwoSumCSharp-LeetCode_01/TwoSumCSharp-LeetCode_01.csproj" Id="e9071941-6140-4fcc-bd3b-8186e29715bb" />
+    <Project Path="LeetCode/CSharp/ValidPalindromeCSharp-LeetCode_125/ValidPalindromeCSharp-LeetCode_125.csproj" Id="3cef28a3-6473-4a96-9a63-eec5c4b45084" />
+    <Project Path="LeetCode/CSharp/ValidParenthesisCSharp-LeetCode_20/ValidParenthesisCSharp-LeetCode_20.csproj" Id="91c275fa-9050-4674-998a-71715ef4bd11" />
+  </Folder>
+  <Folder Name="/LeetCode/UnitTests/" />
+  <Folder Name="/LeetCode/UnitTests/Cpp/">
+    <Project Path="LeetCode/UnitTests/Cpp/CombinationSumIICpp-LeetCode_40-TESTS/CombinationSumIICpp-LeetCode_40-TESTS.vcxproj" Id="f1af87af-7fd6-44fc-a359-6ff43b24bb1b" />
+    <Project Path="LeetCode/UnitTests/Cpp/CombinationSumIIICpp-LeetCode_216-TESTS/CombinationSumIIICpp-LeetCode_216-TESTS.vcxproj" Id="3938ac18-1076-4e49-adcf-07037e69bfc0" />
+    <Project Path="LeetCode/UnitTests/Cpp/LetterCombinationsCpp-LeetCode17-PaylocityExam-TESTS/LetterCombinationsCpp-LeetCode17-PaylocityExam-TESTS.vcxproj" Id="02093987-bf5a-4b82-a2b8-4187b38902d2" />
+    <Project Path="LeetCode/UnitTests/Cpp/PermutationsCpp-LeetCode_46-TESTS/PermutationsCpp-LeetCode_46-TESTS.vcxproj" Id="abf9f12b-acb6-4c59-8e07-c93e7640b792" />
+    <Project Path="LeetCode/UnitTests/Cpp/PermutationsIICpp-LeetCode_47-TESTS/PermutationsIICpp-LeetCode_47-TESTS.vcxproj" Id="ecdd2774-faa4-481a-bdad-4fc8e7a0e10a" />
+  </Folder>
+  <Folder Name="/LeetCode/UnitTests/CSharp/">
+    <Project Path="LeetCode/UnitTests/CSharp/CombinationSumIICSharp-LeetCode_40-TESTS/CombinationSumIICSharp-LeetCode_40-TESTS.csproj" Id="5f211345-aa26-4a5c-9eb3-23468f3d4c2f" />
+    <Project Path="LeetCode/UnitTests/CSharp/CombinationSumIIICSharp-LeetCode_216-TESTS/CombinationSumIIICSharp-LeetCode_216-TESTS.csproj" />
+    <Project Path="LeetCode/UnitTests/CSharp/LetterCombinationsCSharp-LeetCode17-PaylocityExam-TESTS/LetterCombinationsCSharp-LeetCode17-PaylocityExam-TESTS.csproj" Id="3f93a3de-c4b3-4b20-a295-6383aa88805b" />
+    <Project Path="LeetCode/UnitTests/CSharp/PermutationsCSharp-LeetCode_46-TESTS/PermutationsCSharp-LeetCode_46-TESTS.csproj" Id="4cf8283c-7ab8-46e6-b6ee-aaf7aed17b7a" />
+    <Project Path="LeetCode/UnitTests/CSharp/PermutationsIICSharp-LeetCode_47-TESTS/PermutationsIICSharp-LeetCode_47-TESTS.csproj" Id="bec5c427-995a-4a19-bfcd-62392583e399" />
+  </Folder>
+</Solution>

@@ -1,0 +1,108 @@
+# Visual Studio / IDE
+.vs/
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.sln.ide
+
+# Build outputs (C#)
+**/bin/
+**/obj/
+artifacts/
+out/
+publish/
+
+# NuGet / packages
+packages/
+**/packages/
+*.nupkg
+.nuget/
+
+# C++ / MSVC
+ipch/
+*.opensdf
+*.sdf
+*.VC.db
+*.VC.VC.opendb
+*.ilk
+*.pdb
+*.idb
+*.exp
+
+# CMake / cross-platform native build
+build/
+**/build/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# MSVC / CMake architecture build folders (x64, x86 and common variants)
+# Covers top-level and nested architecture folders and their Debug/Release outputs
+x64/
+**/x64/
+**/x64/**/Debug/
+**/x64/**/Release/
+
+x86/
+**/x86/
+**/x86/**/Debug/
+**/x86/**/Release/
+
+# Catch common architecture folder name variants (e.g., x86b, x86_64)
+**/x86*/**
+**/x64*/**
+
+# Native binaries / libs / test executables
+**/*.exe
+**/*.dll
+**/*.lib
+**/*.so
+**/*.a
+**/*.o
+**/*.obj
+
+# Common editor/workspace files
+*.code-workspace
+
++# Local package folders (optional)
+/.packages
+
+# Test results and logs
+TestResults/
+*.trx
+*.coverage
+*.coveragexml
+*.log
+*.testresults
+
+# Google Test / native test artifacts
+**/bin/**
+**/lib/**
+**/test/**
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+
+# OS files
+*.DS_Store
+Thumbs.db
+desktop.ini
+
+# Secrets / local settings
+local.settings.json
+secrets.json
+.env
+.env.local
+
+# Prevent committing editor backups
+*~ 
+*.swp
+
+# If binaries are already tracked, untrack them after updating .gitignore:
+# git rm -r --cached --ignore-unmatch **/bin/** **/obj/** **/build/** **/*.exe **/*.dll **/*.lib

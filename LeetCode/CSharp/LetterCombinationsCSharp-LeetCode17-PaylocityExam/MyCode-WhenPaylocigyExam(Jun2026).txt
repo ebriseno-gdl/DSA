@@ -1,0 +1,44 @@
+using System.Text;
+
+namespace Project;
+
+public class MainClass
+{
+  static void Main(string[] args)
+  {
+      string input = "32";
+      Console.WriteLine("Input: " + input);
+      var output = LetterCombinations(input);
+  }
+
+  public static IList<string> LetterCombinations(string digits) {
+    
+        Dictionary<char, char[]> mapLetters = new Dictionary<char, char[]> ();
+        mapLetters['2'] = new char[] {'a', 'b', 'c'};
+        mapLetters['3'] = new char[] {'d', 'e', 'f'};
+        mapLetters['4'] = new char[] {'g', 'h', 'i'};
+        mapLetters['5'] = new char[] {'j', 'k', 'l'};
+        mapLetters['6'] = new char[] {'m', 'n', 'o'};
+        mapLetters['7'] = new char[] {'p', 'q', 'r', 's'};
+        mapLetters['8'] = new char[] {'t', 'u', 'v'};
+        mapLetters['9'] = new char[] {'w', 'x', 'y', 'z'};
+
+        List<string> output = new List<string>();
+        for (int i = 0; i < digits.Length; i++)
+        {
+          var lettersI = mapLetters[digits[i]];
+          StringBuilder s = new StringBuilder();
+          foreach( var letterI in lettersI) 
+          {
+            s.Append(letterI);
+            for (int j = i+1; j <= digits.Length; j++)
+            {
+
+              var lettersJ = mapLetters[digits[j]];
+            }
+          } 
+          
+        }
+        return output; 
+    }    
+}

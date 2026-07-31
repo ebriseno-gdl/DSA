@@ -1,0 +1,59 @@
+# Normalize line endings
+* text=auto
+
+# Force LF for CI/scripts
+*.sh     text eol=lf
+*.yml    text eol=lf
+*.yaml   text eol=lf
+
+# PowerShell: prefer CRLF on Windows
+*.ps1    text eol=crlf
+
+# Source files & project files
+*.cs         text diff=csharp
+*.csproj     text
+*.sln        text
+*.slnx       text
+*.vcxproj    text
+CMakeLists.txt text
+*.h          text
+*.hpp        text
+*.c          text
+*.cpp        text
+
+# Treat documentation and config as text for consistent diffs/line endings
+*.md         text
+*.json       text
+
+# Binary files (no EOL conversion, no text diffs)
+*.exe    binary
+*.dll    binary
+*.lib    binary
+*.so     binary
+*.a      binary
+*.o      binary
+*.obj    binary
+*.pdb    binary
+*.zip    binary
+*.7z     binary
+*.tar    binary
+*.gz     binary
+*.png    binary
+*.jpg    binary
+*.jpeg   binary
+*.gif    binary
+*.ico    binary
+
+# GitHub workflows
+.github/** text
+
+# Export ignore build artifacts in archives
+bin/**          export-ignore
+obj/**          export-ignore
+build/**        export-ignore
+
+# Architecture build folders (do not include in archives)
+x64/**          export-ignore
+x86/**          export-ignore
+**/x86*/**      export-ignore
+**/x64*/**      export-ignore

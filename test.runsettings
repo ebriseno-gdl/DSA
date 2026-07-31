@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RunSettings>
+  <GoogleTest>
+    <!-- avoid adapter discovery mode that needs PDBs -->
+	<ForceListContent>false</ForceListContent>ntent>
+  </GoogleTest>
+
+  <RunConfiguration>
+	<!-- force x64 testhost -->
+	<TargetPlatform>x64</TargetPlatform>
+	<!-- run hosts serially -->
+	<MaxCpuCount>1</MaxCpuCount>
+	<!-- timeout (ms) -->
+	<TestSessionTimeout>600000</TestSessionTimeout>
+  </RunConfiguration>
+</RunSettings>
