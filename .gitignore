@@ -104,5 +104,13 @@ secrets.json
 *~ 
 *.swp
 
+# Ignore git bundle backup files but keep other files (e.g., README.md)
+# Top-level bundles
+/backups/*.bundle
+
+# Bundles in subfolders (if any)
+!/backups/             # ensure folder itself is not ignored (optional clarity)
+**/backups/**/*.bundle
+
 # If binaries are already tracked, untrack them after updating .gitignore:
 # git rm -r --cached --ignore-unmatch **/bin/** **/obj/** **/build/** **/*.exe **/*.dll **/*.lib
