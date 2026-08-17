@@ -45,6 +45,7 @@
     <Project Path="LeetCode/UnitTests/CSharp/CombinationSumIICSharp-LeetCode_40-TESTS/CombinationSumIICSharp-LeetCode_40-TESTS.csproj" Id="5f211345-aa26-4a5c-9eb3-23468f3d4c2f" />
     <Project Path="LeetCode/UnitTests/CSharp/CombinationSumIIICSharp-LeetCode_216-TESTS/CombinationSumIIICSharp-LeetCode_216-TESTS.csproj" />
     <Project Path="LeetCode/UnitTests/CSharp/LetterCombinationsCSharp-LeetCode17-PaylocityExam-TESTS/LetterCombinationsCSharp-LeetCode17-PaylocityExam-TESTS.csproj" Id="3f93a3de-c4b3-4b20-a295-6383aa88805b" />
+    <Project Path="LeetCode/UnitTests/CSharp/N-QueensCSharp-LeetCode_51-TESTS/N-QueensCSharp-LeetCode_51-TESTS.csproj" Id="b5419bd1-38a2-4b24-b19b-ff346693960a" />
     <Project Path="LeetCode/UnitTests/CSharp/PermutationsCSharp-LeetCode_46-TESTS/PermutationsCSharp-LeetCode_46-TESTS.csproj" Id="4cf8283c-7ab8-46e6-b6ee-aaf7aed17b7a" />
     <Project Path="LeetCode/UnitTests/CSharp/PermutationsIICSharp-LeetCode_47-TESTS/PermutationsIICSharp-LeetCode_47-TESTS.csproj" Id="bec5c427-995a-4a19-bfcd-62392583e399" />
   </Folder>
