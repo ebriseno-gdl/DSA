@@ -28,7 +28,11 @@
  *    [
  *      [ "Q" ]
  *    ]
- *
+ * Overview explanation for all implementations:
+ *  - All implementations solve N-Queens by exploring row-by-row placements with backtracking: choose a column for the current row,
+ *    test for conflicts, recurse to the next row, and undo the placement on return. Pruning via conflict trackers (sets, arrays, or masks)
+ *    dramatically reduces the search space compared to naive enumeration.
+ *    
  * Implementations overview (what each does, differences, pros/cons)
  *
  * 1) SolveNQueens1_JaggedHash

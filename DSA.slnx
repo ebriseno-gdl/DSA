@@ -6,7 +6,9 @@
   </Configurations>
   <Folder Name="/Codility/" />
   <Folder Name="/DS/" />
-  <Folder Name="/LeetCode/" />
+  <Folder Name="/LeetCode/">
+    <File Path="LeetCode/README.md" />
+  </Folder>
   <Folder Name="/LeetCode/Cpp/">
     <Project Path="LeetCode/Cpp/CombinationSumIICpp-LeetCode_40/CombinationSumIICpp-LeetCode_40.vcxproj" Id="b00f264e-e346-4c49-a578-3f838c578e3b" />
     <Project Path="LeetCode/Cpp/CombinationSumIIICpp-LeetCode_216/CombinationSumIIICpp-LeetCode_216.vcxproj" Id="1df5c3d0-44a3-4593-9c4b-7d9b40822d0d" />
@@ -48,5 +50,8 @@
     <Project Path="LeetCode/UnitTests/CSharp/N-QueensCSharp-LeetCode_51-TESTS/N-QueensCSharp-LeetCode_51-TESTS.csproj" Id="b5419bd1-38a2-4b24-b19b-ff346693960a" />
     <Project Path="LeetCode/UnitTests/CSharp/PermutationsCSharp-LeetCode_46-TESTS/PermutationsCSharp-LeetCode_46-TESTS.csproj" Id="4cf8283c-7ab8-46e6-b6ee-aaf7aed17b7a" />
     <Project Path="LeetCode/UnitTests/CSharp/PermutationsIICSharp-LeetCode_47-TESTS/PermutationsIICSharp-LeetCode_47-TESTS.csproj" Id="bec5c427-995a-4a19-bfcd-62392583e399" />
+  </Folder>
+  <Folder Name="/Solution Items/">
+    <File Path="README.md" />
   </Folder>
 </Solution>
