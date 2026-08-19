@@ -6,7 +6,9 @@
   </Configurations>
   <Folder Name="/Codility/" />
   <Folder Name="/DS/" />
-  <Folder Name="/LeetCode/" />
+  <Folder Name="/LeetCode/">
+    <File Path="LeetCode/README.md" />
+  </Folder>
   <Folder Name="/LeetCode/Cpp/">
     <Project Path="LeetCode/Cpp/CombinationSumIICpp-LeetCode_40/CombinationSumIICpp-LeetCode_40.vcxproj" Id="b00f264e-e346-4c49-a578-3f838c578e3b" />
     <Project Path="LeetCode/Cpp/CombinationSumIIICpp-LeetCode_216/CombinationSumIIICpp-LeetCode_216.vcxproj" Id="1df5c3d0-44a3-4593-9c4b-7d9b40822d0d" />
@@ -25,6 +27,7 @@
     <Project Path="LeetCode/CSharp/LetterCombinationsCSharp-LeetCode17-PaylocityExam/LetterCombinationsCSharp-LeetCode17-PaylocityExam.csproj" Id="9dd0e53c-45d8-462a-9785-f4f1a05e2121" />
     <Project Path="LeetCode/CSharp/LongestSubstrNoRepeatCharsCSharp-LeetCode_3/LongestSubstrNoRepeatCharsCSharp-LeetCode_3.csproj" Id="a227a940-0691-4e16-8103-5c3bafe3c132" />
     <Project Path="LeetCode/CSharp/MergeIntervalsCSharp-LeetCode_56/MergeIntervalsCSharp-LeetCode_56.csproj" Id="3378e6af-f0b2-47bd-93af-5207a2a1e6ee" />
+    <Project Path="LeetCode/CSharp/N-QueensCSharp-LeetCode_51/N-QueensCSharp-LeetCode_51.csproj" Id="0f4df237-6fb6-49f9-9795-7360a2b3fa1f" />
     <Project Path="LeetCode/CSharp/NumberOfIslandsCSharp-LeetCode_200/NumberOfIslandsCSharp-LeetCode_200.csproj" Id="71ea81a9-9916-4319-b32c-bd80af9371ef" />
     <Project Path="LeetCode/CSharp/PermutationsCSharp-LeetCode_46/PermutationsCSharp-LeetCode_46.csproj" Id="d5c12868-bcdb-4325-876a-f32ab660c9d3" />
     <Project Path="LeetCode/CSharp/PermutationsIICSharp-LeetCode_47/PermutationsIICSharp-LeetCode_47.csproj" Id="537dd69b-7bb1-4093-b8a5-d69c927d1b20" />
@@ -44,7 +47,11 @@
     <Project Path="LeetCode/UnitTests/CSharp/CombinationSumIICSharp-LeetCode_40-TESTS/CombinationSumIICSharp-LeetCode_40-TESTS.csproj" Id="5f211345-aa26-4a5c-9eb3-23468f3d4c2f" />
     <Project Path="LeetCode/UnitTests/CSharp/CombinationSumIIICSharp-LeetCode_216-TESTS/CombinationSumIIICSharp-LeetCode_216-TESTS.csproj" />
     <Project Path="LeetCode/UnitTests/CSharp/LetterCombinationsCSharp-LeetCode17-PaylocityExam-TESTS/LetterCombinationsCSharp-LeetCode17-PaylocityExam-TESTS.csproj" Id="3f93a3de-c4b3-4b20-a295-6383aa88805b" />
+    <Project Path="LeetCode/UnitTests/CSharp/N-QueensCSharp-LeetCode_51-TESTS/N-QueensCSharp-LeetCode_51-TESTS.csproj" Id="b5419bd1-38a2-4b24-b19b-ff346693960a" />
     <Project Path="LeetCode/UnitTests/CSharp/PermutationsCSharp-LeetCode_46-TESTS/PermutationsCSharp-LeetCode_46-TESTS.csproj" Id="4cf8283c-7ab8-46e6-b6ee-aaf7aed17b7a" />
     <Project Path="LeetCode/UnitTests/CSharp/PermutationsIICSharp-LeetCode_47-TESTS/PermutationsIICSharp-LeetCode_47-TESTS.csproj" Id="bec5c427-995a-4a19-bfcd-62392583e399" />
+  </Folder>
+  <Folder Name="/Solution Items/">
+    <File Path="README.md" />
   </Folder>
 </Solution>
