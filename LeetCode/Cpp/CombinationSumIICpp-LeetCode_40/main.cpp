@@ -50,7 +50,7 @@ static void printInput(const vector<int>& group)
 		cout << group[i];
 		if (i + 1 < group.size()) cout << ",";
 	}
-	cout << "]" << endl;
+	cout << "]\n";
 }
 
 static void printOutput(const vector<vector<int>>& groups)
@@ -64,7 +64,7 @@ static void printOutput(const vector<vector<int>>& groups)
 		}
 		cout << "]";
 	}
-	cout << "]" << endl;
+	cout << "]\n";
 }
 
 int main()
@@ -132,11 +132,11 @@ int main()
 
 			cout << "Input: ";
 			printInput(nums);
-			cout << "Target: " << target << endl;
+			cout << "Target: " << target << "\n";
 			vector<vector<int>> result = solver.combinationSum2(const_cast<vector<int>&>(nums), target);
 			cout << "Output: ";
 			printOutput(result);
-			cout << endl;
+			cout << "\n";
 		}
 	}
 	return 0;

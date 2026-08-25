@@ -51,7 +51,7 @@ int main()
 		for (const auto& combination : combinations) {
 			cout << combination << " ";
 		}
-		cout << endl;
+		cout << "\n";
 	}
 	else
 	{
@@ -63,7 +63,7 @@ int main()
 			for (const auto& combination : combinations) {
 				cout << combination << " ";
 			}
-			cout << endl;
+			cout << "\n";
 		}
 	}
 	return 0;

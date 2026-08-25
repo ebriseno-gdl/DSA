@@ -82,10 +82,6 @@
 using System;
 using System.Buffers;
 using System.Collections.Generic;
-using System.Data.Common;
-using System.Numerics;
-using static System.Collections.Specialized.BitVector32;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Project
 {
@@ -95,8 +91,8 @@ namespace Project
         {
             Console.WriteLine("--- N-Queens - LeetCode 51 - Backtracking (C#) ---");
 
-            Console.Write("Enter the size of the chessboard (N): ");
-            string input = Console.ReadLine();
+            Console.Write("Enter the size of the chessboard (N) (or press Enter to use default examples): ");
+            string? input = Console.ReadLine();
             if (!string.IsNullOrWhiteSpace(input))
             {
                 if (!int.TryParse(input, out int n))
@@ -161,10 +157,10 @@ namespace Project
 
         private static void PrintSolutions(string prompt, IList<IList<string>> solutions)
         {
-            Console.WriteLine($"Solutions({prompt}):");
+            Console.WriteLine($"  Solutions({prompt}):");
             foreach (var solution in solutions)
             {
-                Console.WriteLine($"   [{string.Join(",", solution)}]");
+                Console.WriteLine($"     [{string.Join(",", solution)}]");
             }
         }
 

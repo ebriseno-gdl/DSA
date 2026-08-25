@@ -47,7 +47,7 @@ static void printOutput(const vector<vector<int>>& groups)
 		}
 		cout << "]";
 	}
-	cout << "]" << endl;
+	cout << "]\n";
 }
 
 int main()
@@ -86,13 +86,13 @@ int main()
 		for (const auto& example : defaultExamples) {
 			int k = example.first;
 			int n = example.second;
-			cout << "Input: k = " << k << ", n = " << n << endl;
+			cout << "Input: k = " << k << ", n = " << n << "\n";
 
 			vector<vector<int>> result = solver.combinationSum3(k, n);
 
 			cout << "Output: ";
 			printOutput(result);
-			cout << endl;
+			cout << "\n";
 		}
 	}
 	return 0;
