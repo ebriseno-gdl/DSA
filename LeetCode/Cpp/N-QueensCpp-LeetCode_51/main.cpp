@@ -59,6 +59,9 @@ int main()
 
 		vector<vector<string>> solutions4 = solver.solveNQueens4(n);
 		printSolutions("4", solutions4);
+
+		vector<vector<string>> solutions5 = solver.solveNQueens5(n);
+		printSolutions("5", solutions5);
 	}
 	else
 	{
@@ -79,6 +82,9 @@ int main()
 
 			vector<vector<string>> solutions4 = solver.solveNQueens4(n);
 			printSolutions("4", solutions4);
+			
+			vector<vector<string>> solutions5 = solver.solveNQueens5(n);
+			printSolutions("5", solutions5);
 		}
 	}
 	return 0;

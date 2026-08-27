@@ -256,3 +256,73 @@ vector<vector<string>> Solution::solveNQueens4(int n)
     backtrack(0, 0, 0, 0);
     return solutions;
 };
+
+vector<vector<string>> Solution::solveNQueens5(int n)
+{
+	// Solutionn that uses bitwise operations with standard integers (int) 
+    // and a 1D primitive array to track the column index of the queen for each row.
+
+    vector<vector<string>> solutions;
+
+    // Tracks the column index of the queen for each row.
+    // board[row] = col    
+    vector<int> board(n);
+
+    auto GenerateBoardStrings = [&]() -> vector<string>
+    {
+        vector<string> outBoard(n, string(n, '.'));
+
+		// Fill the board with queens based on the column indices stored in the board vector.
+		for (int row = 0; row < n; row++)
+		{
+			outBoard[row][board[row]] = 'Q';
+		}
+        return outBoard;
+    };
+
+    // Using integers as bitmasks. Passed by value because ints fit entirely in CPU registers.
+    function<void(int, int, int, int)> backtrack = [&](int row, int cols, int diags, int antiDiags)
+        {
+            // Base case - A Solution (N Quens has been placed in the board)
+            if (row == n)
+            {
+                solutions.push_back(GenerateBoardStrings());  // Zero conversion cost: Direct push back
+                return;
+            }
+
+            for (int col = 0; col < n; col++)
+            {
+
+                // if the queen can be attacked
+                // Instant O(1) checks without casting math overhead
+                // Check if the col~th bit is set im any of our masks
+                // (1 << col) create a mask with a 1 at the specific colummn position.
+                if ((cols & (1 << col)) ||
+                    (diags & (1 << (row - col + n - 1))) ||
+                    (antiDiags & (1 << (row + col))))
+                {
+                    continue;
+                }
+
+                // Add the Queen to the board - Choose
+                // Record choice in the 1D primitive array (O(1) memory write)
+                board[row] = col;
+
+                // Move on the next row to placed the next queen con the updated board - Explore
+                // Update bitmasks using the bitwise OR (|) operator.
+                backtrack(row + 1,
+                    (cols | (1 << col)),
+                    (diags | (1 << (row - col + n - 1))),
+                    (antiDiags | (1 << (row + col))));
+
+                // remove the queen from board - Unchoose
+                // "Unchoose" step is implicit. 
+                // The next loop iteration or higher stack frame will simply overwrite board[row].
+
+            }
+        };
+
+    // 0 means all calumns/diagonals/antidiagonals are completely free.
+    backtrack(0, 0, 0, 0);
+    return solutions;
+};

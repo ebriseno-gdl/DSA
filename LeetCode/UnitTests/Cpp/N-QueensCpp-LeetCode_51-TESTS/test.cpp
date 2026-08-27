@@ -24,6 +24,8 @@ TEST(solveNQueens, Example1)
 	EXPECT_EQ(solutions3, expected);
 	auto solutions4 = solver.solveNQueens4(n);
 	EXPECT_EQ(solutions4, expected);
+	auto solutions5 = solver.solveNQueens5(n);
+	EXPECT_EQ(solutions5, expected);
 }
 
 TEST(solveNQueens, Example2)
@@ -39,6 +41,8 @@ TEST(solveNQueens, Example2)
 	EXPECT_EQ(solutions3, expected);
 	auto solutions4 = solver.solveNQueens4(n);
 	EXPECT_EQ(solutions4, expected);
+	auto solutions5 = solver.solveNQueens5(n);
+	EXPECT_EQ(solutions5, expected);
 }
 
 TEST(solveNQueens, Example3)
@@ -54,6 +58,8 @@ TEST(solveNQueens, Example3)
 	EXPECT_EQ(solutions3, expected);
 	auto solutions4 = solver.solveNQueens4(n);
 	EXPECT_EQ(solutions4, expected);
+	auto solutions5 = solver.solveNQueens5(n);
+	EXPECT_EQ(solutions5, expected);
 }
 
 TEST(solveNQueens, Example4)
@@ -72,6 +78,8 @@ TEST(solveNQueens, Example4)
 	EXPECT_EQ(solutions3, expected);
 	auto solutions4 = solver.solveNQueens4(n);
 	EXPECT_EQ(solutions4, expected);
+	auto solutions5 = solver.solveNQueens5(n);
+	EXPECT_EQ(solutions5, expected);
 }
 
 TEST(solveNQueens, Example5)
@@ -98,6 +106,8 @@ TEST(solveNQueens, Example5)
 	EXPECT_EQ(solutions3, expected);
 	auto solutions4 = solver.solveNQueens4(n);
 	EXPECT_EQ(solutions4, expected);
+	auto solutions5 = solver.solveNQueens5(n);
+	EXPECT_EQ(solutions5, expected);
 }
 
 TEST(solveNQueens, Example6)
@@ -118,5 +128,7 @@ TEST(solveNQueens, Example6)
 	EXPECT_EQ(solutions3, expected);
 	auto solutions4 = solver.solveNQueens4(n);
 	EXPECT_EQ(solutions4, expected);
+	auto solutions5 = solver.solveNQueens5(n);
+	EXPECT_EQ(solutions5, expected);
 }
 
