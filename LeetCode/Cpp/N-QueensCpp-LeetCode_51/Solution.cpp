@@ -7,16 +7,36 @@
 
 using namespace std;
 
-vector<vector<string>> Solution::solveNQueens1(int n)
+/*
+ * solveNQueens1
+ *
+ * Approach: Row-by-row backtracking using an explicit `vector<vector<char>>` internal board
+ * and three `unordered_set<int>` trackers for columns, main-diagonals (row-col) and anti-diagonals (row+col).
+ *
+ * Time complexity: Exponential (upper bound comparable to O(N!)); pruning via trackers reduces the explored space.
+ * Space complexity: O(N^2) for the internal board + O(N) recursion depth + O(N) average set storage.
+ *
+ * Pros:
+ *  - Very readable; explicit board makes debugging and result construction trivial.
+ * Cons:
+ *  - `unordered_set` lookups and management have higher constant overhead than arrays/bitmasks.
+ *
+ * Notes:
+ *  - Uses an internal `createboard()` helper to convert `vector<vector<char>>` into `vector<string>` for output.
+ *  - Good as a pedagogy / reference implementation.
+ */
+vector<vector<string>> Solution::SolveNQueens1_JaggedHash(int n)
 {
 	vector<vector<string>> solutions;
         
     unordered_set<int> cols;
     unordered_set<int> diagonals;
     unordered_set<int> antiDiagonals;
-        
+    
+	// Initialize the intern board as a 2D vector of chars, filled with '.'
     vector<vector<char>> intBoard(n, vector<char>(n, '.'));
 
+	// Helper function to convert the internal board representation into a vector of strings for output
 	auto createboard = [&]() -> vector<string>
 	{
 		vector<string> outBoard;
@@ -27,7 +47,8 @@ vector<vector<string>> Solution::solveNQueens1(int n)
 		}
 		return outBoard;
 	};
-        
+    
+	// Backtracking function to place queens row by row
     function<void(int)> backtrack = [&](int row)
     {
         // Base case - A Solution (N Quens has been placed in the board)
@@ -36,14 +57,17 @@ vector<vector<string>> Solution::solveNQueens1(int n)
             solutions.push_back(createboard());
             return;
         }
-            
+        
+		// Try placing a queen in each column of the current row
         for (int col = 0; col < n; col++)
         {
             int currDiagonal = row - col;
             int currAntiDiagonal = row + col;
                 
             // if the queen can be attacked
-            if (cols.count(col) || diagonals.count(currDiagonal) || antiDiagonals.count(currAntiDiagonal))
+            if (cols.count(col) || 
+                diagonals.count(currDiagonal) || 
+                antiDiagonals.count(currAntiDiagonal))
             {
                 continue;
             }
@@ -70,38 +94,54 @@ vector<vector<string>> Solution::solveNQueens1(int n)
     return solutions;
 };
 
-vector<vector<string>> Solution::solveNQueens2(int n)
+/*
+ * solveNQueens2
+ *
+ * Approach: Backtracking while maintaining the board directly as `vector<string>` and using
+ * `unordered_set<int>` trackers for columns and diagonals.
+ *
+ * Time complexity: Exponential (pruned by trackers).
+ * Space complexity: O(N^2) for board strings + O(N) recursion depth + O(N) set storage.
+ *
+ * Pros:
+ *  - Avoids conversion/clone overhead by storing rows as `string` directly; simpler result push.
+ * Cons:
+ *  - `unordered_set` overhead remains; board still uses O(N^2) memory.
+ *
+ * Notes:
+ *  - Preferred over the jagged-char variant when clarity and slightly lower allocation cost are desired.
+ */
+vector<vector<string>> Solution::solveNQueens2_StringBoard_Hash(int n)
 {
-    // Solution where the board is managed directly as vector<string>
-    // this is different to 1st solution where the board is managed as vector<vector<char>>
-    // which needs of createOutBoard helper function to convert to a vector<string>,
-    // so this solution saves both time and memory overhead
-
     vector<vector<string>> solutions;
 
     unordered_set<int> cols;
     unordered_set<int> diagonals;
     unordered_set<int> antiDiagonals;
 
-    // initializa the board as a vector of strings    
-    vector<string> board(n, string(n, '.'));
+	// Initialize the internal Board as a vector of strings, each string representing a row filled with '.' 
+    vector<string> intBoard(n, string(n, '.'));
 
+	// Backtracking function to place queens row by row
     function<void(int)> backtrack = [&](int row)
     {
         // Base case - A Solution (N Quens has been placed in the board)
         if (row == n)
         {
-            solutions.push_back(board);  // Zero conversion cost: Direct push back
+            solutions.push_back(intBoard);  // Zero conversion cost: Direct push back
             return;
         }
 
+		// Try placing a queen in each column of the current row
         for (int col = 0; col < n; col++)
         {
             int currDiagonal = row - col;
             int currAntiDiagonal = row + col;
 
             // if the queen can be attacked
-            if (cols.count(col) || diagonals.count(currDiagonal) || antiDiagonals.count(currAntiDiagonal))
+            if (cols.count(col) || 
+                diagonals.count(currDiagonal) || 
+                antiDiagonals.count(currAntiDiagonal))
             {
                 continue;
             }
@@ -110,7 +150,7 @@ vector<vector<string>> Solution::solveNQueens2(int n)
             cols.insert(col);
             diagonals.insert(currDiagonal);
             antiDiagonals.insert(currAntiDiagonal);
-            board[row][col] = 'Q';
+            intBoard[row][col] = 'Q';
 
             // Move on the next row to placed the next queen con the updated board - Explore
             backtrack(row + 1);
@@ -119,7 +159,7 @@ vector<vector<string>> Solution::solveNQueens2(int n)
             cols.erase(col);
             diagonals.erase(currDiagonal);
             antiDiagonals.erase(currAntiDiagonal);
-            board[row][col] = '.';
+            intBoard[row][col] = '.';
 
         }
     };
@@ -129,12 +169,25 @@ vector<vector<string>> Solution::solveNQueens2(int n)
 
 };
 
-vector<vector<string>> Solution::solveNQueens3(int n)
+/*
+ * solveNQueens3
+ *
+ * Approach: Backtracking using `vector<bool>` arrays for `cols`, `diagonals`, and `antiDiagonals`
+ * to achieve O(1) occupancy checks, with the board stored as `vector<string>`.
+ *
+ * Time complexity: Exponential with much-reduced constant factors thanks to O(1) boolean checks.
+ * Space complexity: O(N^2) for the board + O(N) recursion stack + O(N) boolean arrays (2n-1 for diagonals).
+ *
+ * Pros:
+ *  - Very fast constant-time checks without hash overhead; straightforward index mapping.
+ * Cons:
+ *  - Needs diagonal index shifting (row-col + offset).
+ *
+ * Notes:
+ *  - Use this variant when hash-table overhead is a bottleneck but bitmasking is undesired.
+ */
+vector<vector<string>> Solution::solveNQueens3_BoolArr(int n)
 {
-    // Solution that uses bitwise boolean vectors instead of std::unordered_set
-    // eliminates the hash table overhead, reducing the diagonal and colummn
-    // loockup times to a lightning-fast $O(1)$ constant time operations.
-
     vector<vector<string>> solutions;
 
     // Fixed-size boolean vectors act as director-lookup tables
@@ -145,15 +198,16 @@ vector<vector<string>> Solution::solveNQueens3(int n)
     // Track anti-diagonals (range of row+col is 0 to 2*(n-1), Total 2n-1)
     vector<bool> antiDiagonals(2 * n - 1, false);
 
-    // initializa the board as a vector of strings    
-    vector<string> board(n, string(n, '.'));
+    // Initialize the internal Board as a vector of strings, each string representing a row filled with '.' 
+    vector<string> intBoard(n, string(n, '.'));
 
+    //  
     function<void(int)> backtrack = [&](int row)
     {
         // Base case - A Solution (N Quens has been placed in the board)
         if (row == n)
         {
-            solutions.push_back(board);  // Zero conversion cost: Direct push back
+            solutions.push_back(intBoard);  // Zero conversion cost: Direct push back
             return;
         }
 
@@ -177,7 +231,7 @@ vector<vector<string>> Solution::solveNQueens3(int n)
             cols[col] = true;
             diagonals[currDiagIdx] = true;
             antiDiagonals[currAntiDiagIdx] = true;
-            board[row][col] = 'Q';
+            intBoard[row][col] = 'Q';
 
             // Move on the next row to placed the next queen con the updated board - Explore
             backtrack(row + 1);
@@ -187,7 +241,7 @@ vector<vector<string>> Solution::solveNQueens3(int n)
             cols[col] = false;
             diagonals[currDiagIdx] = false;
             antiDiagonals[currAntiDiagIdx] = false;
-            board[row][col] = '.';
+            intBoard[row][col] = '.';
 
         }
     };
@@ -197,19 +251,29 @@ vector<vector<string>> Solution::solveNQueens3(int n)
 
 };
 
-vector<vector<string>> Solution::solveNQueens4(int n)
+/*
+ * solveNQueens4
+ *
+ * Approach: Backtracking using integer bitmasks for `cols`, main-diagonals and anti-diagonals;
+ * board stored as `vector<string>` for result generation. Masks are passed by value in recursion.
+ *
+ * Time complexity: Exponential; bitmask checks use low-overhead bitwise operations giving excellent performance.
+ * Space complexity: O(N^2) for board (output) + O(N) recursion depth; bitmasks use O(1) auxiliary space.
+ *
+ * Pros:
+ *  - Fastest conflict checks (bitwise ops), minimal per-check overhead. Masks passed by value avoid separate unchoose.
+ * Cons:
+ *  - Limited by integer width (use wider types for N near/above bit width).
+ *
+ * Notes:
+ *  - For N >= 32 (or platform-dependent bit width) switch to `long long` or another representation.
+ */
+vector<vector<string>> Solution::solveNQueens4_BitMask(int n)
 {
-    // Solution that uses bitwise operations with standard integers (int).
-    // It is the ultimate optimización for the N-Queensland problem.
-    // Bécause standard integers have at least 32 bits, we can use individual
-    // bits as binary flags (0 for open, 1 for blocked).
-    // This complexity eliminates the vector<bool> arrays, reducting our 
-    // tracking space complexity to a true $O(1)$ constant auxiliary space.
-
     vector<vector<string>> solutions;
 
-    // initializa the board as a vector of strings    
-    vector<string> board(n, string(n, '.'));
+    // Initialize the internal Board as a vector of strings, each string representing a row filled with '.' 
+    vector<string> intBoard(n, string(n, '.'));
 
     // Using integers as bitmasks. Passed by value because ints fit entirely in CPU registers.
     function<void(int, int, int, int)> backtrack = [&](int row, int cols, int diags, int antiDiags)
@@ -217,10 +281,11 @@ vector<vector<string>> Solution::solveNQueens4(int n)
         // Base case - A Solution (N Quens has been placed in the board)
         if (row == n)
         {
-            solutions.push_back(board);  // Zero conversion cost: Direct push back
+            solutions.push_back(intBoard);  // Zero conversion cost: Direct push back
             return;
         }
 
+		// Try placing a queen in each column of the current row
         for (int col = 0; col < n; col++)
         {
 
@@ -236,7 +301,7 @@ vector<vector<string>> Solution::solveNQueens4(int n)
             }
 
             // Add the Queen to the board - Choose
-            board[row][col] = 'Q';
+            intBoard[row][col] = 'Q';
 
             // Move on the next row to placed the next queen con the updated board - Explore
             // Update bitmasks using the bitwise OR (|) operator.
@@ -247,7 +312,7 @@ vector<vector<string>> Solution::solveNQueens4(int n)
 
             // remove the queen from board - Unchoose.
             // Bitmasks revert automatically becuuse they were passed by value.
-            board[row][col] = '.';
+            intBoard[row][col] = '.';
 
         }
     };
@@ -257,30 +322,46 @@ vector<vector<string>> Solution::solveNQueens4(int n)
     return solutions;
 };
 
-vector<vector<string>> Solution::solveNQueens5(int n)
+/*
+ * solveNQueens5
+ *
+ * Approach: Hybrid: integer bitmasks for occupancy tracking and a 1D `vector<int>` board where
+ * `board[row] = col` stores queen column indices; `GenerateBoardStrings()` builds the output.
+ *
+ * Time complexity: Exponential; low constant factors due to bitmasks.
+ * Space complexity: O(N^2) for generated output + O(N) for the 1D board + O(1) bitmask storage.
+ *
+ * Pros:
+ *  - Minimal runtime memory for intermediate board state; fast mask checks and cheap final board generation.
+ * Cons:
+ *  - Same bit-width caveat as other mask-based solutions; slightly less direct board visualization during debugging.
+ *
+ * Notes:
+ *  - Good compromise between minimal working memory and speed; `GenerateBoardStrings()` converts the compact
+ *    representation into `vector<string>` for the caller.
+ */
+vector<vector<string>> Solution::solveNQueens5_IndexBoard_BitMask(int n)
 {
-	// Solutionn that uses bitwise operations with standard integers (int) 
-    // and a 1D primitive array to track the column index of the queen for each row.
-
     vector<vector<string>> solutions;
 
     // Tracks the column index of the queen for each row.
-    // board[row] = col    
-    vector<int> board(n);
+    // intBoard[row] = col    
+    vector<int> intBoard(n);
 
+	// Helper function to convert the 1D board representation into a vector of strings for output
     auto GenerateBoardStrings = [&]() -> vector<string>
     {
         vector<string> outBoard(n, string(n, '.'));
 
-		// Fill the board with queens based on the column indices stored in the board vector.
+		// Fill the out board with queens based on the column indices stored in the int board vector.
 		for (int row = 0; row < n; row++)
 		{
-			outBoard[row][board[row]] = 'Q';
+			outBoard[row][intBoard[row]] = 'Q';
 		}
         return outBoard;
     };
 
-    // Using integers as bitmasks. Passed by value because ints fit entirely in CPU registers.
+	// Backtracking function to place queens row by row
     function<void(int, int, int, int)> backtrack = [&](int row, int cols, int diags, int antiDiags)
         {
             // Base case - A Solution (N Quens has been placed in the board)
@@ -290,6 +371,7 @@ vector<vector<string>> Solution::solveNQueens5(int n)
                 return;
             }
 
+			// Try placing a queen in each column of the current row
             for (int col = 0; col < n; col++)
             {
 
@@ -306,7 +388,7 @@ vector<vector<string>> Solution::solveNQueens5(int n)
 
                 // Add the Queen to the board - Choose
                 // Record choice in the 1D primitive array (O(1) memory write)
-                board[row] = col;
+                intBoard[row] = col;
 
                 // Move on the next row to placed the next queen con the updated board - Explore
                 // Update bitmasks using the bitwise OR (|) operator.
@@ -315,7 +397,7 @@ vector<vector<string>> Solution::solveNQueens5(int n)
                     (diags | (1 << (row - col + n - 1))),
                     (antiDiags | (1 << (row + col))));
 
-                // remove the queen from board - Unchoose
+                // remove the queen from internal board - Unchoose
                 // "Unchoose" step is implicit. 
                 // The next loop iteration or higher stack frame will simply overwrite board[row].
 

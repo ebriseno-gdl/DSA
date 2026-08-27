@@ -16,15 +16,15 @@ TEST(solveNQueens, Example1)
 	vector<vector<string>> expected{
 		{"Q"}
 	};
-	auto solutions1 = solver.solveNQueens1(n);
+	auto solutions1 = solver.SolveNQueens1_JaggedHash(n);
 	EXPECT_EQ(solutions1, expected);
-	auto solutions2 = solver.solveNQueens2(n);
+	auto solutions2 = solver.solveNQueens2_StringBoard_Hash(n);
 	EXPECT_EQ(solutions2, expected);
-	auto solutions3 = solver.solveNQueens3(n);
+	auto solutions3 = solver.solveNQueens3_BoolArr(n);
 	EXPECT_EQ(solutions3, expected);
-	auto solutions4 = solver.solveNQueens4(n);
+	auto solutions4 = solver.solveNQueens4_BitMask(n);
 	EXPECT_EQ(solutions4, expected);
-	auto solutions5 = solver.solveNQueens5(n);
+	auto solutions5 = solver.solveNQueens5_IndexBoard_BitMask(n);
 	EXPECT_EQ(solutions5, expected);
 }
 
@@ -33,15 +33,15 @@ TEST(solveNQueens, Example2)
 	Solution solver;
 	int n = 2;
 	vector<vector<string>> expected{};
-	auto solutions1 = solver.solveNQueens1(n);
+	auto solutions1 = solver.SolveNQueens1_JaggedHash(n);
 	EXPECT_EQ(solutions1, expected);
-	auto solutions2 = solver.solveNQueens2(n);
+	auto solutions2 = solver.solveNQueens2_StringBoard_Hash(n);
 	EXPECT_EQ(solutions2, expected);
-	auto solutions3 = solver.solveNQueens3(n);
+	auto solutions3 = solver.solveNQueens3_BoolArr(n);
 	EXPECT_EQ(solutions3, expected);
-	auto solutions4 = solver.solveNQueens4(n);
+	auto solutions4 = solver.solveNQueens4_BitMask(n);
 	EXPECT_EQ(solutions4, expected);
-	auto solutions5 = solver.solveNQueens5(n);
+	auto solutions5 = solver.solveNQueens5_IndexBoard_BitMask(n);
 	EXPECT_EQ(solutions5, expected);
 }
 
@@ -50,15 +50,15 @@ TEST(solveNQueens, Example3)
 	Solution solver;
 	int n = 3;
 	vector<vector<string>> expected{};
-	auto solutions1 = solver.solveNQueens1(n);
+	auto solutions1 = solver.SolveNQueens1_JaggedHash(n);
 	EXPECT_EQ(solutions1, expected);
-	auto solutions2 = solver.solveNQueens2(n);
+	auto solutions2 = solver.solveNQueens2_StringBoard_Hash(n);
 	EXPECT_EQ(solutions2, expected);
-	auto solutions3 = solver.solveNQueens3(n);
+	auto solutions3 = solver.solveNQueens3_BoolArr(n);
 	EXPECT_EQ(solutions3, expected);
-	auto solutions4 = solver.solveNQueens4(n);
+	auto solutions4 = solver.solveNQueens4_BitMask(n);
 	EXPECT_EQ(solutions4, expected);
-	auto solutions5 = solver.solveNQueens5(n);
+	auto solutions5 = solver.solveNQueens5_IndexBoard_BitMask(n);
 	EXPECT_EQ(solutions5, expected);
 }
 
@@ -70,15 +70,15 @@ TEST(solveNQueens, Example4)
 		{".Q..", "...Q", "Q...", "..Q."},
 		{"..Q.", "Q...", "...Q", ".Q.."}
 	};
-	auto solutions1 = solver.solveNQueens1(n);
+	auto solutions1 = solver.SolveNQueens1_JaggedHash(n);
 	EXPECT_EQ(solutions1, expected);
-	auto solutions2 = solver.solveNQueens2(n);
+	auto solutions2 = solver.solveNQueens2_StringBoard_Hash(n);
 	EXPECT_EQ(solutions2, expected);
-	auto solutions3 = solver.solveNQueens3(n);
+	auto solutions3 = solver.solveNQueens3_BoolArr(n);
 	EXPECT_EQ(solutions3, expected);
-	auto solutions4 = solver.solveNQueens4(n);
+	auto solutions4 = solver.solveNQueens4_BitMask(n);
 	EXPECT_EQ(solutions4, expected);
-	auto solutions5 = solver.solveNQueens5(n);
+	auto solutions5 = solver.solveNQueens5_IndexBoard_BitMask(n);
 	EXPECT_EQ(solutions5, expected);
 }
 
@@ -98,15 +98,15 @@ TEST(solveNQueens, Example5)
 		{"....Q",".Q...","...Q.","Q....","..Q.."},
 		{"....Q","..Q..","Q....","...Q.",".Q..."}
 	};
-	auto solutions1 = solver.solveNQueens1(n);
+	auto solutions1 = solver.SolveNQueens1_JaggedHash(n);
 	EXPECT_EQ(solutions1, expected);
-	auto solutions2 = solver.solveNQueens2(n);
+	auto solutions2 = solver.solveNQueens2_StringBoard_Hash(n);
 	EXPECT_EQ(solutions2, expected);
-	auto solutions3 = solver.solveNQueens3(n);
+	auto solutions3 = solver.solveNQueens3_BoolArr(n);
 	EXPECT_EQ(solutions3, expected);
-	auto solutions4 = solver.solveNQueens4(n);
+	auto solutions4 = solver.solveNQueens4_BitMask(n);
 	EXPECT_EQ(solutions4, expected);
-	auto solutions5 = solver.solveNQueens5(n);
+	auto solutions5 = solver.solveNQueens5_IndexBoard_BitMask(n);
 	EXPECT_EQ(solutions5, expected);
 }
 
@@ -120,15 +120,15 @@ TEST(solveNQueens, Example6)
 		{"...Q..","Q.....","....Q.",".Q....",".....Q","..Q..."},
 		{"....Q.","..Q...","Q.....",".....Q","...Q..",".Q...."}
 	};
-	auto solutions1 = solver.solveNQueens1(n);
+	auto solutions1 = solver.SolveNQueens1_JaggedHash(n);
 	EXPECT_EQ(solutions1, expected);
-	auto solutions2 = solver.solveNQueens2(n);
+	auto solutions2 = solver.solveNQueens2_StringBoard_Hash(n);
 	EXPECT_EQ(solutions2, expected);
-	auto solutions3 = solver.solveNQueens3(n);
+	auto solutions3 = solver.solveNQueens3_BoolArr(n);
 	EXPECT_EQ(solutions3, expected);
-	auto solutions4 = solver.solveNQueens4(n);
+	auto solutions4 = solver.solveNQueens4_BitMask(n);
 	EXPECT_EQ(solutions4, expected);
-	auto solutions5 = solver.solveNQueens5(n);
+	auto solutions5 = solver.solveNQueens5_IndexBoard_BitMask(n);
 	EXPECT_EQ(solutions5, expected);
 }
 

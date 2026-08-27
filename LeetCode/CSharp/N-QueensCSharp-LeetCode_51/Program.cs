@@ -155,6 +155,7 @@ namespace Project
             }
         }
 
+        // Helper method to print the solutions in a readable format
         private static void PrintSolutions(string prompt, IList<IList<string>> solutions)
         {
             Console.WriteLine($"  Solutions({prompt}):");
