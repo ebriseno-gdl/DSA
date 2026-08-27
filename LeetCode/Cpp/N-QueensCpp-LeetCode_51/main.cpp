@@ -14,6 +14,7 @@ static void printSolutions(string prompt, const vector<vector<string>>& solution
 		cout << "    [";
 		for (const auto& row : solution) {
 			cout << row;
+			if (&row != &solution.back()) cout << ",";
 		}
 		cout << "]" << "\n";
 	}

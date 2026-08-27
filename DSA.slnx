@@ -41,6 +41,7 @@
     <Project Path="LeetCode/UnitTests/Cpp/CombinationSumIICpp-LeetCode_40-TESTS/CombinationSumIICpp-LeetCode_40-TESTS.vcxproj" Id="f1af87af-7fd6-44fc-a359-6ff43b24bb1b" />
     <Project Path="LeetCode/UnitTests/Cpp/CombinationSumIIICpp-LeetCode_216-TESTS/CombinationSumIIICpp-LeetCode_216-TESTS.vcxproj" Id="3938ac18-1076-4e49-adcf-07037e69bfc0" />
     <Project Path="LeetCode/UnitTests/Cpp/LetterCombinationsCpp-LeetCode17-PaylocityExam-TESTS/LetterCombinationsCpp-LeetCode17-PaylocityExam-TESTS.vcxproj" Id="02093987-bf5a-4b82-a2b8-4187b38902d2" />
+    <Project Path="LeetCode/UnitTests/Cpp/N-QueensCpp-LeetCode_51-TESTS/N-QueensCpp-LeetCode_51-TESTS.vcxproj" Id="a6580fb3-62f9-4670-a22a-068f7f8f6265" />
     <Project Path="LeetCode/UnitTests/Cpp/PermutationsCpp-LeetCode_46-TESTS/PermutationsCpp-LeetCode_46-TESTS.vcxproj" Id="abf9f12b-acb6-4c59-8e07-c93e7640b792" />
     <Project Path="LeetCode/UnitTests/Cpp/PermutationsIICpp-LeetCode_47-TESTS/PermutationsIICpp-LeetCode_47-TESTS.vcxproj" Id="ecdd2774-faa4-481a-bdad-4fc8e7a0e10a" />
   </Folder>
