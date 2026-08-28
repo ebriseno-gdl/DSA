@@ -54,7 +54,7 @@ static void printInput(const vector<int>& group)
 		cout << group[i];
 		if (i + 1 < group.size()) cout << ",";
 	}
-	cout << "]" << endl;
+	cout << "]" << "\n";
 }
 
 static void printOutput(const vector<vector<int>>& groups)
@@ -68,7 +68,7 @@ static void printOutput(const vector<vector<int>>& groups)
 		}
 		cout << "]";
 	}
-	cout << "]" << endl;
+	cout << "]" << "\n";
 }
 
 int main()
@@ -110,42 +110,59 @@ int main()
 	else
 	{
 		// CASE B: Predefined Test Cases
+		vector<vector<int>> testCases = { 
+			{1, 2, 3}, 
+			{0, 1}, 
+			{1} 
+		};
+		for (vector<int> testCase : testCases)
+		{
+			cout << "Input: ";
+			printInput(testCase);
+			auto outputA = solver.permute(testCase);
+			cout << "Output (Permute-Auxiliary Backtracking): ";
+			printOutput(outputA);
+			auto outputB = solver.permute1(testCase);
+			cout << "Output (Permute-In-place Backtracking - Best): ";
+			printOutput(outputB);
+			cout << "\n";
+		}
 
-		// Example 1
-		vector<int> input1 = { 1, 2, 3 };
-		cout << "Input 1: ";
-		printInput(input1);
-		auto output1A = solver.permute(input1);
-		cout << "Output 1 (Permute-Auxiliary Backtracking): ";
-		printOutput(output1A);
-		auto output1B = solver.permute1(input1);
-		cout << "Output 1 (Permute-In-place Backtracking - Best): ";
-		printOutput(output1B);
-		cout << "\n";
+		//// Example 1
+		//vector<int> input1 = { 1, 2, 3 };
+		//cout << "Input 1: ";
+		//printInput(input1);
+		//auto output1A = solver.permute(input1);
+		//cout << "Output 1 (Permute-Auxiliary Backtracking): ";
+		//printOutput(output1A);
+		//auto output1B = solver.permute1(input1);
+		//cout << "Output 1 (Permute-In-place Backtracking - Best): ";
+		//printOutput(output1B);
+		//cout << "\n";
 
-		// Example 2
-		vector<int> input2 = { 0, 1 };
-		cout << "Input 2: ";
-		printInput(input2);
-		auto output2A = solver.permute(input2);
-		cout << "Output 2 (Permute-Auxiliary Backtracking): ";
-		printOutput(output2A);
-		auto output2B = solver.permute1(input2);
-		cout << "Output 2 (Permute-In-place Backtracking - Best): ";
-		printOutput(output2B);
-		cout << "\n";
+		//// Example 2
+		//vector<int> input2 = { 0, 1 };
+		//cout << "Input 2: ";
+		//printInput(input2);
+		//auto output2A = solver.permute(input2);
+		//cout << "Output 2 (Permute-Auxiliary Backtracking): ";
+		//printOutput(output2A);
+		//auto output2B = solver.permute1(input2);
+		//cout << "Output 2 (Permute-In-place Backtracking - Best): ";
+		//printOutput(output2B);
+		//cout << "\n";
 
-		// Example 3
-		vector<int> input3 = { 1 };
-		cout << "Input 3: ";
-		printInput(input3);
-		auto output3A = solver.permute(input3);
-		cout << "Output 3 (Permute-Auxiliary Backtracking): ";
-		printOutput(output3A);
-		auto output3B = solver.permute1(input3);
-		cout << "Output 3 (Permute-In-place Backtracking - Best): ";
-		printOutput(output3B);
-		cout << "\n";
+		//// Example 3
+		//vector<int> input3 = { 1 };
+		//cout << "Input 3: ";
+		//printInput(input3);
+		//auto output3A = solver.permute(input3);
+		//cout << "Output 3 (Permute-Auxiliary Backtracking): ";
+		//printOutput(output3A);
+		//auto output3B = solver.permute1(input3);
+		//cout << "Output 3 (Permute-In-place Backtracking - Best): ";
+		//printOutput(output3B);
+		//cout << "\n";
 	}
 
 	return 0;

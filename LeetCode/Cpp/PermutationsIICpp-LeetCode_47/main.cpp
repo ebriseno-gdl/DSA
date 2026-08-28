@@ -50,7 +50,7 @@ static void printInput(const vector<int>& group)
 		cout << group[i];
 		if (i + 1 < group.size()) cout << ",";
 	}
-	cout << "]" << endl;
+	cout << "]" << "\n";
 }
 
 static void printOutput(const vector<vector<int>>& groups)
@@ -64,7 +64,7 @@ static void printOutput(const vector<vector<int>>& groups)
 		}
 		cout << "]";
 	}
-	cout << "]" << endl;
+	cout << "]" << "\n";
 }
 
 int main()
@@ -109,14 +109,14 @@ int main()
 			{1, 2, 2},
 			{1, 1, 1, 2}
 		};
-		for (const auto& testCase : testCases)
+		for (vector<int> testCase : testCases)
 		{
 			cout << "Input: ";
 			printInput(testCase);
-			vector<vector<int>> result = solver.permuteUnique(const_cast<vector<int>&>(testCase));
+			vector<vector<int>> result = solver.permuteUnique(testCase);
 			cout << "Output: ";
 			printOutput(result);
-			cout << endl;
+			cout << "\n";
 		}
 	}
 	return 0;
