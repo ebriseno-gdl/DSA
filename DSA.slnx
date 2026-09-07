@@ -16,6 +16,7 @@
     <Project Path="LeetCode/Cpp/N-QueensCpp-LeetCode_51/N-QueensCpp-LeetCode_51.vcxproj" Id="1dad1914-bad2-445b-9653-fd7b76d62e99" />
     <Project Path="LeetCode/Cpp/PermutationsCpp-LeetCode_46/PermutationsCpp-LeetCode_46.vcxproj" Id="f47c271d-cd16-4630-b2e9-1f2586a10c78" />
     <Project Path="LeetCode/Cpp/PermutationsIICpp-LeetCode_47/PermutationsIICpp-LeetCode_47.vcxproj" Id="eb2f84f8-3607-4855-b18c-b86c4d3c5f11" />
+    <Project Path="LeetCode/Cpp/SudokuCpp-LeetCode_37/SudokuCpp-LeetCode_37.vcxproj" Id="d459b428-bd67-4677-86e2-ed03f2efdb30" />
     <Project Path="LeetCode/Cpp/TwoSumCpp-LeetCode_01/TwoSumCpp-LeetCode_01.vcxproj" Id="0c49781d-a786-43f8-b969-60534f7da132" />
   </Folder>
   <Folder Name="/LeetCode/CSharp/">
@@ -44,6 +45,7 @@
     <Project Path="LeetCode/UnitTests/Cpp/N-QueensCpp-LeetCode_51-TESTS/N-QueensCpp-LeetCode_51-TESTS.vcxproj" Id="a6580fb3-62f9-4670-a22a-068f7f8f6265" />
     <Project Path="LeetCode/UnitTests/Cpp/PermutationsCpp-LeetCode_46-TESTS/PermutationsCpp-LeetCode_46-TESTS.vcxproj" Id="abf9f12b-acb6-4c59-8e07-c93e7640b792" />
     <Project Path="LeetCode/UnitTests/Cpp/PermutationsIICpp-LeetCode_47-TESTS/PermutationsIICpp-LeetCode_47-TESTS.vcxproj" Id="ecdd2774-faa4-481a-bdad-4fc8e7a0e10a" />
+    <Project Path="LeetCode/UnitTests/Cpp/SudokuCpp-LeetCode_37-TESTS/SudokuCpp-LeetCode_37-TESTS.vcxproj" Id="daf665c7-39bf-46c5-ab38-bb8cdcf9ef1f" />
   </Folder>
   <Folder Name="/LeetCode/UnitTests/CSharp/">
     <Project Path="LeetCode/UnitTests/CSharp/CombinationSumIICSharp-LeetCode_40-TESTS/CombinationSumIICSharp-LeetCode_40-TESTS.csproj" Id="5f211345-aa26-4a5c-9eb3-23468f3d4c2f" />
