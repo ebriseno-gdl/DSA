@@ -38,66 +38,66 @@ protected:
     }
 };
 
-TEST_F(SudokuTest, SolveSudoku1) {
+TEST_F(SudokuTest, solveSudoku1_JaggedNew) {
     Solution solver;
     // copy board (separate instance)
     auto board = initial;                 // copy so each test starts fresh
-    solver.solveSudoku1(board);
+    solver.solveSudoku1_JaggedNew(board);
     EXPECT_EQ(board, expected);
 }
 
-TEST_F(SudokuTest, SolveSudoku2) {
+TEST_F(SudokuTest, solveSudoku2_IdxParam_JaggedNew) {
     Solution solver;
     // copy board (separate instance)
     auto board = initial;                 // copy so each test starts fresh
-    solver.solveSudoku2(board);
+    solver.solveSudoku2_IdxParam_JaggedNew(board);
     EXPECT_EQ(board, expected);
 }
 
-TEST_F(SudokuTest, SolveSudoku3) {
+TEST_F(SudokuTest, solveSudoku3_VectorRAII) {
     Solution solver;
     // copy board (separate instance)
     auto board = initial;                 // copy so each test starts fresh
-    solver.solveSudoku3(board);
+    solver.solveSudoku3_VectorRAII(board);
     EXPECT_EQ(board, expected);
 }
 
-TEST_F(SudokuTest, SolveSudoku4) {
+TEST_F(SudokuTest, solveSudoku4_ManualCleanup) {
     Solution solver;
     // copy board (separate instance)
     auto board = initial;                 // copy so each test starts fresh
-    solver.solveSudoku4(board);
+    solver.solveSudoku4_ManualCleanup(board);
     EXPECT_EQ(board, expected);
 }
 
-TEST_F(SudokuTest, SolveSudoku5) {
+TEST_F(SudokuTest, solveSudoku5_PrecomputedBox_Vector) {
     Solution solver;
     // copy board (separate instance)
     auto board = initial;                 // copy so each test starts fresh
-    solver.solveSudoku5(board);
+    solver.solveSudoku5_PrecomputedBox_Vector(board);
     EXPECT_EQ(board, expected);
 }
 
-TEST_F(SudokuTest, SolveSudoku6) {
+TEST_F(SudokuTest, solveSudoku6_Bitmask_Candidates) {
 	Solution solver;
 	// copy board (separate instance)
 	auto board = initial;                 // copy so each test starts fresh
-	solver.solveSudoku6(board);
+	solver.solveSudoku6_Bitmask_Candidates(board);
 	EXPECT_EQ(board, expected);
 }
 
-TEST_F(SudokuTest, SolveSudoku7) {
+TEST_F(SudokuTest, solveSudoku7_Bitmask_Flat) {
 	Solution solver;
 	// copy board (separate instance)
 	auto board = initial;                 // copy so each test starts fresh
-	solver.solveSudoku7(board);
+	solver.solveSudoku7_Bitmask_Flat(board);
 	EXPECT_EQ(board, expected);
 }
 
-TEST_F(SudokuTest, SolveSudoku8) {
+TEST_F(SudokuTest, solveSudoku8_Bitmask_MRV_Popcount) {
 	Solution solver;
 	// copy board (separate instance)
 	auto board = initial;                 // copy so each test starts fresh
-	solver.solveSudoku8(board);
+	solver.solveSudoku8_Bitmask_MRV_Popcount(board);
 	EXPECT_EQ(board, expected);
 }

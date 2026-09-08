@@ -1,3 +1,48 @@
+/*
+ * LeetCode Problem 37: Sudoku Solver (C++)
+ *
+ * Fill a 9x9 Sudoku board so that each row, column and 3x3 box contains digits 1-9 exactly once.
+ * Input/Output: `vector<vector<char>>` with '.' for empty cells; solver mutates the board in-place.
+ *
+ * Overview:
+ *  - Core technique: backtracking (choose a digit for an empty cell, recurse, undo on return).
+ *  - Variants trade off readability, memory management, and runtime constant factors:
+ *      - jagged dynamic arrays, RAII `vector` trackers, flat bitmasks and candidate heuristics (MRV).
+ *
+ * Implementations (brief differences / pros-cons):
+ *  1) `solveSudoku1`  - Classic row-major backtracking using manually `new[]`ed `int**` trackers.
+ *       Pros: straightforward; Cons: manual heap management, higher allocation overhead.
+ *
+ *  2) `solveSudoku2`  - Similar to (1) but passes precomputed box index to helpers for clarity.
+ *       Pros: clearer helper signatures; Cons: still manual allocation.
+ *
+ *  3) `solveSudoku3`  - RAII-friendly variant using `vector` trackers instead of raw `new[]`.
+ *       Pros: safer memory management; Cons: slightly more indirection vs. bitmasks.
+ *
+ *  4) `solveSudoku4`  - Manual trackers with centralized `cleanup_memory` and try/catch for safety.
+ *       Pros: safer manual cleanup; Cons: non-idiomatic vs. RAII.
+ *
+ *  5) `solveSudoku5`  - Vector-based trackers + precomputed box-index table for O(1) box lookup.
+ *       Pros: balanced readability and speed.
+ *
+ *  6) `solveSudoku6`  - Bitmask + candidate bitsets using popcount for pruning / candidate enumeration.
+ *       Pros: low overhead, fast candidate computation; Cons: more complex bit logic.
+ *
+ *  7) `solveSudoku7`  - Flat bitmask arrays + static `BOX_INDEX` for minimal footprint and fast checks.
+ *       Pros: best practical speed among straightforward variants; Cons: less intuitive.
+ *
+ *  8) `solveSudoku8`  - Bitmask + MRV (minimum-remaining-values) heuristic using `std::popcount`.
+ *       Pros: best at solving hardest boards; Cons: most complex to read/maintain.
+ *
+ * Recommendation:
+ *  - For speed: `solveSudoku7` or `solveSudoku8` (bitmask + heuristics).
+ *  - For clarity / teaching: `solveSudoku3` or `solveSudoku5` (vector-based, RAII).
+ *
+ * Practical notes:
+ *  - Sudoku solving is exponential in worst case; heuristics and fast occupancy checks greatly reduce search.
+ *  - Use `std::popcount` (C++20) for fast candidate counts where available.
+ *  - Keep conversion/IO helpers local so implementations can be copied to online judges easily.
+ */
 #include "Solution.h"
 
 #include <iostream>
@@ -83,35 +128,35 @@ int main()
 		printBoard("Input board", board);
 
 		auto board1 = board; // copy board (separate instance)
-		solver.solveSudoku1(board1);
+		solver.solveSudoku1_JaggedNew(board1);
         printBoard("Solved 1 board", board1);
 
 		auto board2 = board; // copy board (separate instance)
-        solver.solveSudoku2(board2);
+        solver.solveSudoku2_IdxParam_JaggedNew(board2);
         printBoard("Solved 2 board", board2);
 
         auto board3 = board; // copy board (separate instance)
-        solver.solveSudoku3(board3);
+        solver.solveSudoku3_VectorRAII(board3);
         printBoard("Solved 3 board", board3);
 
         auto board4 = board; // copy board (separate instance)
-        solver.solveSudoku4(board4);
+        solver.solveSudoku4_ManualCleanup(board4);
         printBoard("Solved 4 board", board4);
         
         auto board5 = board; // copy board (separate instance)
-        solver.solveSudoku5(board5);
+        solver.solveSudoku5_PrecomputedBox_Vector(board5);
         printBoard("Solved 5 board", board5);
 
         auto board6 = board; // copy board (separate instance)
-        solver.solveSudoku6(board6);
+        solver.solveSudoku6_Bitmask_Candidates(board6);
         printBoard("Solved 6 board", board6);
 
         auto board7 = board; // copy board (separate instance)
-        solver.solveSudoku7(board7);
+        solver.solveSudoku7_Bitmask_Flat(board7);
         printBoard("Solved 7 board", board7);
 
         auto board8 = board; // copy board (separate instance)
-        solver.solveSudoku8(board8);
+        solver.solveSudoku8_Bitmask_MRV_Popcount(board8);
         printBoard("Solved 8 board", board8);
     }
     else
@@ -133,35 +178,35 @@ int main()
 		printBoard("Input board A", boardA);
 
 		auto boardA1 = boardA; // copy board (separate instance)
-		solver.solveSudoku1(boardA1);
+		solver.solveSudoku1_JaggedNew(boardA1);
 		printBoard("Solved 1 board A", boardA1);
 
 		auto boardA2 = boardA; // copy board (separate instance)
-        solver.solveSudoku2(boardA2);
+        solver.solveSudoku2_IdxParam_JaggedNew(boardA2);
         printBoard("Solved 2 board A", boardA2);
 
 		auto boardA3 = boardA; // copy board (separate instance)
-		solver.solveSudoku3(boardA3);
+		solver.solveSudoku3_VectorRAII(boardA3);
 		printBoard("Solved 3 board A", boardA3);
 
         auto boardA4 = boardA; // copy board (separate instance)
-        solver.solveSudoku4(boardA4);
+        solver.solveSudoku4_ManualCleanup(boardA4);
         printBoard("Solved 4 board A", boardA4);
 
         auto boardA5 = boardA; // copy board (separate instance)
-        solver.solveSudoku5(boardA5);
+        solver.solveSudoku5_PrecomputedBox_Vector(boardA5);
         printBoard("Solved 5 board A", boardA5);
 
         auto boardA6 = boardA; // copy board (separate instance)
-        solver.solveSudoku6(boardA6);
+        solver.solveSudoku6_Bitmask_Candidates(boardA6);
         printBoard("Solved 6 board A", boardA6);
 
         auto boardA7 = boardA; // copy board (separate instance)
-        solver.solveSudoku7(boardA7);
+        solver.solveSudoku7_Bitmask_Flat(boardA7);
         printBoard("Solved 7 board A", boardA7);
 
         auto boardA8 = boardA; // copy board (separate instance)
-        solver.solveSudoku8(boardA8);
+        solver.solveSudoku8_Bitmask_MRV_Popcount(boardA8);
         printBoard("Solved 8 board A", boardA8);
     }
     return 0;
