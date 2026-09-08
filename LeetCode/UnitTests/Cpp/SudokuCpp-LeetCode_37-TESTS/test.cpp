@@ -101,3 +101,11 @@ TEST_F(SudokuTest, solveSudoku8_Bitmask_MRV_Popcount) {
 	solver.solveSudoku8_Bitmask_MRV_Popcount(board);
 	EXPECT_EQ(board, expected);
 }
+
+TEST_F(SudokuTest, veSudoku9_Bitmask_MRV_PrivateHelpers) {
+    Solution solver;
+    // copy board (separate instance)
+    auto board = initial;                 // copy so each test starts fresh
+    solver.solveSudoku9_Bitmask_MRV_PrivateHelpers(board);
+    EXPECT_EQ(board, expected);
+}

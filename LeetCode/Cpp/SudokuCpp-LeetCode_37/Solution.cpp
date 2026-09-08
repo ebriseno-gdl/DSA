@@ -1240,12 +1240,13 @@ void Solution::solveSudoku7_Bitmask_Flat(vector<vector<char>>& board)
  *  - Advanced/combined approach:
  *    - Uses bitmasks for speed and additional heuristics (e.g., choose cell with minimum candidates).
  *    - May use `std::popcount` / candidate enumeration to implement minimum-remaining-values heuristic.
+ *    - Same than solveSudoku9_Bitmask_MRV_PrivateHelpers but lambdas are used for helper functions instead of private member functions.
  *
  * Time complexity:
  *  - Exponential but typically explores far fewer branches because of heuristic selection.
  *
  * Space complexity:
- *  - O(1) fixed-size bitmasks + O(81) recursion stack.
+ *  - O(1) fixed-size trackers (9-bit masks for rows/cols/boxes) + recursion stack (<=81).
  *
  * Pros:
  *  - Best overall solver for hardest boards: combines bit-level speed with heuristic pruning.
@@ -1254,7 +1255,7 @@ void Solution::solveSudoku7_Bitmask_Flat(vector<vector<char>>& board)
  *  - Most complex implementation to read and maintain.
  *
   * Notes:
- *  - Uses C++20 `std::popcount` where available to count candidate bits efficiently.
+ *  - Requires C++20 for `std::popcount`; use alternative popcount if unavailable.
  */
 void Solution::solveSudoku8_Bitmask_MRV_Popcount(vector<vector<char>>& board)
 {
@@ -1413,3 +1414,178 @@ void Solution::solveSudoku8_Bitmask_MRV_Popcount(vector<vector<char>>& board)
     // Start the backtracking algorithm from the first cell
     backtrack();
 }
+
+// --------------------------------------------------------------------------------
+
+// Returns a bitmask of ALL valid numbers (1-9) that can be placed at board[row][col]
+int Solution::get_valid_choices(int row, int col, int idx)
+{
+    // Combined mask of taken numbers across row, column, and box
+    int taken = rows[row] | columns[col] | boxes[idx];
+
+    // Return only the valid bits for digits 1-9 that are NOT taken
+    // (1 << d) for d=1..9 means bits 1 to 9. Mask 0x3FE represents all bits 1-9 set to 1.
+    return (~taken) & 0x3FE;
+};
+
+// Helper function to place a number in a cell
+void Solution::place_number(int d, int row, int col, int idx, vector<vector<char>>& board)
+{
+    int mask = 1 << d;
+    rows[row] |= mask;      // Set bit to 1
+    columns[col] |= mask;   // Set bit to 1
+    boxes[idx] |= mask;     // Set bit to 1
+    board[row][col] = (char)(d + '0');
+};
+
+// Helper function to remove a number from a cell
+void Solution::remove_number(int d, int row, int col, int idx, vector<vector<char>>& board)
+{
+    int mask = 1 << d;
+    rows[row] &= ~mask;      // Clear bit back to 0
+    columns[col] &= ~mask;   // Clear bit back to 0
+    boxes[idx] &= ~mask;     // Clear bit back to 0
+    board[row][col] = '.';
+};
+
+// Backtracking function to solve the Sudoku
+void Solution::backtrack(vector<vector<char>>& board)
+{
+    int min_choices = 10;
+    int best_row = -1;
+    int best_col = -1;
+    int best_choices_mask = 0;
+
+    // Constraint Propagation / MRV (Minimum Remaining Values) Scan
+    for (int row = 0; row < 9; row++)
+    {
+        for (int col = 0; col < 9; col++)
+        {
+            if (board[row][col] == '.')
+            {
+				// Use the precomputed box index for O(1) access
+                int idx = BOX_INDEX[row][col]; // Optimized: Direct array lookup 
+
+				// Get the bitmask of valid choices for this empty cell
+                int choices_mask = get_valid_choices(row, col, idx);
+
+                // Built-in function to count set bits (number of valid choices)
+                //int count = __builtin_popcount(choices_mask); // For GCC/Clang, use __builtin_popcount
+                //int count = __popcnt(choices_mask); // For MSVC, use __popcnt instead of __builtin_popcount
+                int count = popcount(static_cast<unsigned int>(choices_mask)); // For C++20 and later, use std::popcount
+                // Comment about the popcount functions: 
+                // __builtin_popcount is a GCC/Clang built-in function that counts the number of set bits (1s) in an integer.
+                // __popcnt is the equivalent for MSVC (Microsoft Visual C++).
+                // std::popcount is available in C++20 and later, which also counts the number of set bits in an integer.
+
+                // If a cell has 0 valid choices, this branch is invalid. Backtrack immediately!
+                if (count == 0) return;
+
+				// Update the cell with the fewest valid choices (MRV heuristic)
+                if (count < min_choices)
+                {
+                    min_choices = count;
+                    best_row = row;
+                    best_col = col;
+                    best_choices_mask = choices_mask;
+                }
+
+                // Naked Single found (only 1 unique choice). Look no further, solve this cell!
+                if (min_choices == 1) break;
+
+            }
+        }
+		// Naked Single found (only 1 unique choice). Look no further, solve this cell!
+        if (min_choices == 1) break;
+    }
+
+    // If no empty cells are left, the Sudoku is successfully solved
+    if (best_row == -1)
+    {
+        sudoku_solved = true;
+        return;
+    }
+
+    // Try the valid choices for the cell with the fewest options
+    for (int d = 1; d <= 9; d++)
+    {
+		// Check if digit d is a valid choice for the best cell using the bitmask
+        if (best_choices_mask & (1 << d))
+        {
+			// Use the precomputed box index for O(1) access
+            int idx = BOX_INDEX[best_row][best_col]; // Optimized: Direct 
+
+			// Place the number d in the best cell - Choose
+            place_number(d, best_row, best_col, idx, board);
+
+			// Recursively call backtrack to continue solving - Explore
+            backtrack(board);
+
+			// If sudoku is solved, there is no need to backtrack
+            if (sudoku_solved) return;
+
+			// Unchoose: Remove the number d from the best cell and try the next valid choice
+            remove_number(d, best_row, best_col, idx, board);
+        }
+    }
+};
+
+/*
+ * solveSudoku9_Bitmask_MRV_PrivateHelpers
+ *
+ * Approach:
+ *  - Advanced/combined approach:
+ *    - Uses bitmasks for speed and additional heuristics (e.g., choose cell with minimum candidates).
+ *    - May use `std::popcount` / candidate enumeration to implement minimum-remaining-values heuristic.
+ *    - Same than solveSudoku8_Bitmask_MRV_Popcount but with private helper functions instead of lambdas for better readability, maintainability and performance.
+ *
+ * Time complexity:
+ *  - Exponential but typically explores far fewer branches because of heuristic selection.
+ *
+ * Space complexity:
+ *  - O(1) fixed-size trackers (9-bit masks for rows/cols/boxes) + recursion stack (<=81).
+ *
+ * Pros:
+ *  - Best overall solver for hardest boards: combines bit-level speed with heuristic pruning.
+ *  - Clearer testability and reuse since helper functions are private methods instead of in-scope lambdas.
+ *
+ * Cons:
+ *  - More lines and class coupling due to moving helpers into private methods; bit logic is less obvious to newcomers.
+ *
+  * Notes:
+ *  - Requires C++20 for `std::popcount`; use alternative popcount if unavailable.
+ *  - Class Private Methods over Lambdas: Moving tracking funrtions to class member methods completely bypasses the function pointer and closure overhead of lambdas, which can be beneficial in performance-critical code.
+ */
+void Solution::solveSudoku9_Bitmask_MRV_PrivateHelpers(vector<vector<char>>& board)
+{
+    // box size
+    int n = 3;
+    // row and col size
+    int N = n * n;
+
+    // Reset state for multiple calls
+    sudoku_solved = false;
+    for (int i = 0; i < N; i++)
+    {
+        rows[i] = columns[i] = boxes[i] = 0;
+    }
+
+    // Fill the tracking arrays based on the initial board configuration
+    for (int row = 0; row < N; row++)
+    {
+        for (int col = 0; col < N; col++)
+        {
+            char num = board[row][col];
+            if (num != '.')
+            {
+                int d = num - '0';
+                int idx = BOX_INDEX[row][col]; // Optimized: Direct array lookup
+                place_number(d, row, col, idx, board);
+            }
+        }
+    }
+
+    // Start the backtracking algorithm from the first cell
+    backtrack(board);
+
+};
